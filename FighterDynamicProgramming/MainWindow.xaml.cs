@@ -1,4 +1,5 @@
 ﻿using FighterDynamicProgramming.Models;
+using FighterDynamicProgramming.Models.Equipment;
 using FighterDynamicProgramming.Models.Ships;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,27 @@ namespace FighterDynamicProgramming
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		/// <summary>
+		/// 装備数制限
+		/// </summary>
+		private Dictionary<Type, int> _EquipLimit;
+
+		/// <summary>
+		/// 艦戦以外を積んでいいスロット最低数
+		/// </summary>
+		private int _MinimumLimit = 10;
+
 		public MainWindow()
 		{
 			InitializeComponent();
-			
-			var kanmusu = new[] { typeof(AkagiKai), typeof(KagaKai),  typeof(ZaraKai) };
+
+			_EquipLimit = new Dictionary<Type, int>();
+
+			_EquipLimit.Add(typeof(ReppuKai), 1);
+
+			_EquipLimit.Add(typeof(Reppu601), 2);
+
+			var kanmusu = new[] { typeof(ZuikakuKai2), typeof(HiryuKai2),  typeof(ZaraKai) };
 
 			var result = GetList(kanmusu.Where(x => x != null).ToArray());
 
@@ -24,9 +41,9 @@ namespace FighterDynamicProgramming
 
 			try
 			{
-				var min = result.Where(x => x.Attackable && x.AirSuperiorityPotential >= 350).Min(y => y.AirSuperiorityPotential);
+				var min = result.Where(x => x.CheckLimit(_EquipLimit) && x.Attackable && x.AirSuperiorityPotential >= 355).Min(y => y.AirSuperiorityPotential);
 				
-				foreach (var data in result.Where(x => x.Attackable && x.AirSuperiorityPotential == min))
+				foreach (var data in result.Where(x => x.CheckLimit(_EquipLimit) && x.Attackable && x.AirSuperiorityPotential == min))
 				{
 					Console.WriteLine(min + ":" + data.ToString());
 				}
@@ -215,7 +232,7 @@ namespace FighterDynamicProgramming
 			}
 			else
 			{
-				aircraft = new Type[] { typeof(Type97TorpedoBomberTomonagaSquadron), typeof(Reppu)};
+				aircraft = new Type[] { typeof(Type97TorpedoBomberTomonagaSquadron), typeof(Reppu), typeof(ReppuKai), typeof(Reppu601)};
 			}
 
 			List<AircraftCarrier> carrierList = new List<AircraftCarrier>();
@@ -239,12 +256,17 @@ namespace FighterDynamicProgramming
 							CarrierBasedAircraft f3 = type3 == null ? null : (CarrierBasedAircraft)Activator.CreateInstance(type3);
 							CarrierBasedAircraft f4 = type4 == null ? null : (CarrierBasedAircraft)Activator.CreateInstance(type4);
 
+
 							AircraftCarrier aircraftCarrier = (AircraftCarrier)Activator.CreateInstance(type);
-							aircraftCarrier.Slot1 = f1;
-							aircraftCarrier.Slot2 = f2;
-							aircraftCarrier.Slot3 = f3;
-							aircraftCarrier.Slot4 = f4;
-							carrierList.Add(aircraftCarrier);
+
+							if (LimitCheck(f1,f2,f3,f4) && MinimumCheck(aircraftCarrier, f1, f2, f3, f4))
+							{
+								aircraftCarrier.Slot1 = f1;
+								aircraftCarrier.Slot2 = f2;
+								aircraftCarrier.Slot3 = f3;
+								aircraftCarrier.Slot4 = f4;
+								carrierList.Add(aircraftCarrier);
+							}
 						}
 					}
 				}
@@ -259,6 +281,45 @@ namespace FighterDynamicProgramming
 			foreach (var airSuperiorityPotential in carrierList.Select(x => x.AirSuperiorityPotential).Distinct())
 			{
 				yield return carrierList.Where(x => x.AirSuperiorityPotential == airSuperiorityPotential).First();
+			}
+		}
+
+		private bool LimitCheck(CarrierBasedAircraft f1, CarrierBasedAircraft f2, CarrierBasedAircraft f3, CarrierBasedAircraft f4)
+		{
+			var list = new[] { f1, f2, f3, f4 };
+
+			foreach (var limit in _EquipLimit)
+			{
+				if (list.Count(x => x?.GetType() == limit.Key) > limit.Value)
+				{
+					return false;
+				}
+			}
+
+			return true;
+		}
+
+		private bool MinimumCheck(AircraftCarrier aircraftCarrier, CarrierBasedAircraft f1, CarrierBasedAircraft f2, CarrierBasedAircraft f3, CarrierBasedAircraft f4)
+		{
+			if(f1 != null && !f1.GetType().IsSubclassOf(typeof(Fighter)) && _MinimumLimit > aircraftCarrier.Slot1Num)
+			{
+				return false;
+			}
+			else if (f2 != null && !f2.GetType().IsSubclassOf(typeof(Fighter)) && _MinimumLimit > aircraftCarrier.Slot2Num)
+			{
+				return false;
+			}
+			else if (f3 != null && !f3.GetType().IsSubclassOf(typeof(Fighter)) && _MinimumLimit > aircraftCarrier.Slot3Num)
+			{
+				return false;
+			}
+			else if (f4 != null && !f4.GetType().IsSubclassOf(typeof(Fighter)) && _MinimumLimit > aircraftCarrier.Slot4Num)
+			{
+				return false;
+			}
+			else
+			{
+				return true;
 			}
 		}
 

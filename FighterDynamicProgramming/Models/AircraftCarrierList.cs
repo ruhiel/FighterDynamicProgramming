@@ -17,6 +17,21 @@ namespace FighterDynamicProgramming.Models
 			return string.Join(",", this.Select(x => x.ToString()));
 		}
 
+		public bool CheckLimit(Dictionary<Type, int> limits)
+		{
+			var list = this.SelectMany(x => x.Slots);
+
+			foreach (var limit in limits)
+			{
+				if (list.Count(x => x?.GetType() == limit.Key) > limit.Value)
+				{
+					return false;
+				}
+			}
+
+			return true;
+		}
+
 		public override bool Equals(object obj)
 		{
 			//objがnullか、型が違うときは、等価でない

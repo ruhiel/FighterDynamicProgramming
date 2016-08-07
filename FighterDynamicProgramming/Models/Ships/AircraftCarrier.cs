@@ -29,6 +29,8 @@ namespace FighterDynamicProgramming.Models
 			this.Slot4 = source?.Slot4;
 		}
 
+		public List<CarrierBasedAircraft> Slots => new List<CarrierBasedAircraft>() { Slot1, Slot2, Slot3, Slot4 };
+
 		public bool UniqEquipment(int count)
 		{
 			var list = new[] { Slot1, Slot2, Slot3, Slot4 }.Where(x => x != null);

@@ -69,6 +69,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Equipment\Reppu601.cs" />
+    <Compile Include="Models\Equipment\ReppuKai.cs" />
     <Compile Include="Models\Ships\AircraftCarrier.cs" />
     <Compile Include="Models\AircraftCarrierList.cs" />
     <Compile Include="Models\Ships\AirCraftCruiser.cs" />
