@@ -69,6 +69,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Ships\AircraftCarrier.cs" />
+    <Compile Include="Models\AircraftCarrierList.cs" />
+    <Compile Include="Models\Ships\AirCraftCruiser.cs" />
+    <Compile Include="Models\Ships\AkagiKai.cs" />
+    <Compile Include="Models\Equipment\CarrierBasedAircraft.cs" />
+    <Compile Include="Models\Equipment\Fighter.cs" />
+    <Compile Include="Models\Ships\HiryuKai2.cs" />
+    <Compile Include="Models\Ships\KagaKai.cs" />
+    <Compile Include="Models\Equipment\Reppu.cs" />
+    <Compile Include="Models\Equipment\SeaplaneFighter.cs" />
+    <Compile Include="Models\Equipment\TorpedoBomber.cs" />
+    <Compile Include="Models\Equipment\Type97TorpedoBomberTomonagaSquadron.cs" />
+    <Compile Include="Models\Ships\ShokakuKai2.cs" />
+    <Compile Include="Models\Ships\ZaraKai.cs" />
+    <Compile Include="Models\Ships\ZuikakuKai2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -86,6 +101,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Compile Include="Models\Equipment\Ro44SeaplaneFighter.cs" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
