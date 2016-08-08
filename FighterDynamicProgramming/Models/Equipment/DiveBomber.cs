@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace FighterDynamicProgramming.Models.Equipment
 {
-	public class Reppu601 : Fighter
+	public class DiveBomber : CarrierBasedAircraft
 	{
-		public override int AA { get { return 11; } }
-
-		public override string Name => "烈風(六〇一空)";
+		public override int Bonus { get { return 3; } }
+		public override bool Attackable => true;
 	}
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FighterDynamicProgramming.Models
 {
-	public class Reppu : Fighter
+	public class Reppuu : Fighter
 	{
 		public override int AA { get { return 10; }  }
 

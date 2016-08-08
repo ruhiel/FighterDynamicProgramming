@@ -69,8 +69,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Equipment\Reppu601.cs" />
-    <Compile Include="Models\Equipment\ReppuKai.cs" />
+    <Compile Include="Models\Equipment\DiveBomber.cs" />
+    <Compile Include="Models\Equipment\Reppuu601AirGroup.cs" />
+    <Compile Include="Models\Equipment\ReppuuKai.cs" />
+    <Compile Include="Models\Equipment\ShindenKai.cs" />
+    <Compile Include="Models\Equipment\Type0FighterModel62FighterBomber.cs" />
     <Compile Include="Models\Ships\AircraftCarrier.cs" />
     <Compile Include="Models\AircraftCarrierList.cs" />
     <Compile Include="Models\Ships\AirCraftCruiser.cs" />
@@ -79,7 +82,7 @@
     <Compile Include="Models\Equipment\Fighter.cs" />
     <Compile Include="Models\Ships\HiryuKai2.cs" />
     <Compile Include="Models\Ships\KagaKai.cs" />
-    <Compile Include="Models\Equipment\Reppu.cs" />
+    <Compile Include="Models\Equipment\Reppuu.cs" />
     <Compile Include="Models\Equipment\SeaplaneFighter.cs" />
     <Compile Include="Models\Equipment\TorpedoBomber.cs" />
     <Compile Include="Models\Equipment\Type97TorpedoBomberTomonagaSquadron.cs" />

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace FighterDynamicProgramming.Models.Equipment
 {
-	public class ReppuKai : Fighter
+	public class Type0FighterModel62FighterBomber : CarrierBasedAircraft
 	{
-		public override int AA { get { return 12; } }
+		public override int AA { get { return 4; } }
 
-		public override string Name => "烈風改";
+		public override string Name => "零式艦戦62型(爆戦)";
 	}
 }

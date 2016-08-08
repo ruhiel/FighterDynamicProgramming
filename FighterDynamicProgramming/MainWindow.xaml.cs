@@ -29,9 +29,13 @@ namespace FighterDynamicProgramming
 
 			_EquipLimit = new Dictionary<Type, int>();
 
-			_EquipLimit.Add(typeof(ReppuKai), 1);
+			_EquipLimit.Add(typeof(ReppuuKai), 1);
 
-			_EquipLimit.Add(typeof(Reppu601), 2);
+			_EquipLimit.Add(typeof(Reppuu601AirGroup), 2);
+
+			_EquipLimit.Add(typeof(Type0FighterModel62FighterBomber), 0);
+
+			_EquipLimit.Add(typeof(ShindenKai), 0);
 
 			var kanmusu = new[] { typeof(ZuikakuKai2), typeof(HiryuKai2),  typeof(ZaraKai) };
 
@@ -232,7 +236,7 @@ namespace FighterDynamicProgramming
 			}
 			else
 			{
-				aircraft = new Type[] { typeof(Type97TorpedoBomberTomonagaSquadron), typeof(Reppu), typeof(ReppuKai), typeof(Reppu601)};
+				aircraft = new Type[] { typeof(Type0FighterModel62FighterBomber), typeof(Type97TorpedoBomberTomonagaSquadron), typeof(Reppuu), typeof(ReppuuKai), typeof(Reppuu601AirGroup), typeof(ShindenKai)};
 			}
 
 			List<AircraftCarrier> carrierList = new List<AircraftCarrier>();
