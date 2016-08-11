@@ -87,6 +87,7 @@
     <Compile Include="Models\Equipment\TorpedoBomber.cs" />
     <Compile Include="Models\Equipment\Type97TorpedoBomberTomonagaSquadron.cs" />
     <Compile Include="Models\Ships\ShokakuKai2.cs" />
+    <Compile Include="Models\Ships\TaihouKai.cs" />
     <Compile Include="Models\Ships\ZaraKai.cs" />
     <Compile Include="Models\Ships\ZuikakuKai2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

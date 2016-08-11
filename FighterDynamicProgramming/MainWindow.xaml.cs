@@ -37,7 +37,7 @@ namespace FighterDynamicProgramming
 
 			_EquipLimit.Add(typeof(ShindenKai), 0);
 
-			var kanmusu = new[] { typeof(ZuikakuKai2), typeof(HiryuKai2),  typeof(ZaraKai) };
+			var kanmusu = new[] { typeof(AkagiKai), typeof(KagaKai),  typeof(ZaraKai) };
 
 			var result = GetList(kanmusu.Where(x => x != null).ToArray());
 
@@ -49,7 +49,7 @@ namespace FighterDynamicProgramming
 				
 				foreach (var data in result.Where(x => x.CheckLimit(_EquipLimit) && x.Attackable && x.AirSuperiorityPotential == min))
 				{
-					Console.WriteLine(min + ":" + data.ToString());
+					Console.WriteLine(min + ":" + data.AttackableNum() + ":" + data.ToString());
 				}
 			}
 			catch (Exception e)

@@ -17,6 +17,8 @@ namespace FighterDynamicProgramming.Models
 			return string.Join(",", this.Select(x => x.ToString()));
 		}
 
+		public int AttackableNum() => this.Sum(x => x.Slots.Count(y => y != null && y.Attackable));
+
 		public bool CheckLimit(Dictionary<Type, int> limits)
 		{
 			var list = this.SelectMany(x => x.Slots);
