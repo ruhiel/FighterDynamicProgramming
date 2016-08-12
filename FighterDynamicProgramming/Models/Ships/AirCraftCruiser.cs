@@ -1,4 +1,4 @@
-﻿namespace FighterDynamicProgramming.Models
+﻿namespace FighterDynamicProgramming.Models.Ships
 {
 	public class AirCraftCruiser : AircraftCarrier
 	{

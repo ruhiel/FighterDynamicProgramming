@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FighterDynamicProgramming.Models
+namespace FighterDynamicProgramming.Models.Ships
 {
 	public class AircraftCarrier : ICloneable
 	{
-		virtual public string Name { get; }
+		virtual public string Name { get { return "なし"; } }
 
 		virtual public int Slot1Num { get; }
 		virtual public int Slot2Num { get; }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FighterDynamicProgramming.Models
+namespace FighterDynamicProgramming.Models.Ships
 {
 	public class KagaKai : AircraftCarrier
 	{

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FighterDynamicProgramming.Models.Ships;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,7 @@ namespace FighterDynamicProgramming.Models
 
 		public bool Attackable => this.All(x => x.Attackable);
 
-		public override string ToString()
-		{
-			return string.Join(",", this.Select(x => x.ToString()));
-		}
+		public string Text => string.Join(",", this.Select(x => x.ToString()));
 
 		public int AttackableNum() => this.Sum(x => x.Slots.Count(y => y != null && y.Attackable));
 
